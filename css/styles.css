@@ -1,0 +1,124 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Helvetica;
+  color: #17B890;
+}
+
+body{
+  background: #181a1b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.header{
+  width: 80vw;
+  height: 10vh;
+  text-align: center;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content{
+  height: 70vh;
+  width: 80vw;
+  background-image: url('../dark snake.png');
+  background-size:contain;
+  background-repeat: no-repeat;
+
+}
+
+.footer{
+  height: 20vh;
+  width: 80vw;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+table{
+  margin: 20px 0 0 0;
+  width: 250px;
+}
+
+table tr td:first-child, th{
+  color: #6D6A75;
+}
+
+canvas{
+  box-shadow: 5px 5px 10px #17B890;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.startContainer, .gameOverContainer{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+
+  background: rgba(0,0,0,0.7);
+}
+
+.startContainer.show, .gameOverContainer.show{
+  display: flex;
+}
+
+.gameOverContainer{
+  flex-direction: column;
+}
+.gameOverContainer table{
+  margin-top: 20px;
+}
+.gameOverContainer .prompt button{
+  margin: -80px 0 0 0;
+}
+
+.sad{
+  color: #adadad;
+}
+
+.prompt{
+  width: 25vw;
+  height: 30vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* background: #17B890; */
+  /* border: 1px dashed #17B890; */
+}
+
+
+.prompt button{
+  min-width: 200px;
+  width: 55%;
+  height: 60px;
+  margin: 0 14px;
+  border: 1px solid #17B890;
+  background: none;
+  outline: none;
+  transition: 0.2s ease-in;
+}
+
+.prompt button:hover{
+  cursor: pointer;
+  border-bottom: 2px solid #17B890;
+  box-shadow: 0 2px 5px #17B890;
+  transform: translateY(-5px);
+}
+
+button i{
+  font-size: 24px;
+  margin: 0 6px;
+  color: #adadad;
+}
