@@ -21,15 +21,15 @@ var Snake = function(x,y,color)
   this.eats = function(food)
   {
     if(this.x >= (food.x-10) && this.x <= (food.x+10) && this.y >= (food.y-10) && this.y <= (food.y+10)){
-			chowed = true;
+      return true;
 		}else{
-			chowed = false;
+      return false;
 		}
   }
 
-  this.dies = function(x,y)
+  this.dies = function()
   {
-    if(x <= 0 || x >= canvas.width || y <= 0 || y >= canvas.height)
+    if(this.x <= 0 || this.x >= canvas.width || this.y <= 0 || this.y >= canvas.height)
     {
 			return true;
 		}

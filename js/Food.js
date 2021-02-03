@@ -15,6 +15,6 @@ var Food = function(x,y,color)
 		context.arc(this.x,this.y,7,0,Math.PI*2,false);
 		context.fillStyle = color;
 		context.fill();
-		foodCount = 1;
+		// foodCount = 1;
 	}
 };

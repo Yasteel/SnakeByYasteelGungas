@@ -18,10 +18,15 @@ body{
   width: 80vw;
   height: 10vh;
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.header .highlight{
+  /* color: #0f61bf; */
+  color: #adadad;
 }
 
 .content{
@@ -46,8 +51,26 @@ table{
   width: 250px;
 }
 
-table tr td:first-child, th{
+table.hide{
+  display: none;
+}
+
+.singlePlayer tr td:first-child,table.singlePlayer th{
   color: #6D6A75;
+}
+
+table.multiplayer{
+  width: 500px;
+  text-align: center;
+}
+
+.multiplayer th, .multiplayer tr td:nth-child(2) {
+  color: #6D6A75;
+}
+
+.multiplayer tr td:last-child{
+  color: #4287f5;
+  /* color: #0f61bf; */
 }
 
 canvas{
@@ -113,7 +136,7 @@ canvas{
 .prompt button:hover{
   cursor: pointer;
   border-bottom: 2px solid #17B890;
-  box-shadow: 0 2px 5px #17B890;
+    box-shadow: 0 2px 5px #17B890;
   transform: translateY(-5px);
 }
 
@@ -122,3 +145,33 @@ button i{
   margin: 0 6px;
   color: #adadad;
 }
+/*====================Settings Styles====================*/
+/* .setting{
+  width: 20vw;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  transition: 0.7s ease-in-out;
+  /* display: flex; */
+  border: 1px solid #adadad;
+}
+
+.setting i{
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 30px;
+  color: #adadad;
+  transition: 0.7s ease-in-out;
+  border-radius: 50%;
+  z-index: 99;
+}
+
+.setting i:hover{
+  transform: rotateZ(120deg);
+  text-shadow: 2px 0px #17B890;
+  cursor: pointer;
+} */
+
+/*====================Settings Styles====================*/

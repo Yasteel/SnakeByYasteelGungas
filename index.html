@@ -10,13 +10,13 @@
   </head>
   <body>
     <div class="header">
-      <h2>Snake Game</h2>
+      <h3>Snake <span class="highlight">By Yasteel</span></h3>
     </div>
     <div class="content">
       <canvas></canvas>
     </div>
     <div class="footer">
-      <table>
+      <table class="singlePlayer">
         <tr>
           <th colspan="2">Player 1</th>
         </tr>
@@ -29,19 +29,39 @@
           <td class="highestScore">0</td>
         </tr>
       </table>
+      <table class="multiplayer" cellspacing=15>
+        <tr>
+          <th>Player 1</th>
+          <th> </th>
+          <th>Player 2</th>
+        </tr>
+        <tr>
+          <td class="player_one_current">0</td>
+          <td>Current Score</td>
+          <td class="player_two_current">0</td>
+        </tr>
+        <tr>
+          <td class="player_one_highest">0</td>
+          <td>Hightest Score</td>
+          <td class="player_two_highest">0</td>
+        </tr>
+      </table>
     </div>
     <div class="startContainer" >
+      <div class="gameInfo">
+        <!-- <img src="Icons/w_key.png" alt="control-SinglePlayer">
+        <img src="Icons/a_key.png" alt="control-SinglePlayer">
+        <img src="Icons/s_key.png" alt="control-SinglePlayer">
+        <img src="Icons/d_key.png" alt="control-SinglePlayer"> -->
+      </div>
       <div class="prompt">
-        <div class="gameInfo">
-
-        </div>
-        <button type="button" class="singlePlayer"><i class="fas fa-gamepad"></i>Single Player</button>
+        <button type="button" class="singlePlayerBtn"><i class="fas fa-gamepad"></i>Single Player</button>
         <button type="button" class="multiPlayer"><i class="fas fa-gamepad"></i> Vs <i class="fas fa-gamepad"></i></button>
       </div>
     </div>
     <div class="gameOverContainer">
       <h2><i class="far fa-frown-open sad"></i> Game Over</h2>
-      <table>
+      <table class="singlePlayer">
         <tr>
           <th colspan="2">Player 1</th>
         </tr>
@@ -52,12 +72,35 @@
         <tr>
           <td>Highest Score</td>
           <td class="highestScore">0</td>
+        </tr>
+      </table>
+      <table class="multiplayer" cellspacing=15 >
+        <tr>
+          <th>Player 1</th>
+          <th> </th>
+          <th>Player 2</th>
+        </tr>
+        <tr>
+          <td class="player_one_current">0</td>
+          <td>Current Score</td>
+          <td class="player_two_current">0</td>
+        </tr>
+        <tr>
+          <td class="player_one_highest">0</td>
+          <td>Hightest Score</td>
+          <td class="player_two_highest">0</td>
         </tr>
       </table>
       <div class="prompt">
         <button type="button" class="restart" ><i class="fas fa-redo-alt"></i> Restart</button>
       </div>
     </div>
+    <!-- <div class="setting">
+      <i class="fas fa-cog setting_btn"></i>
+      <div class="something">
+        <h2>Settings</h2>
+      </div>
+    </div> -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/Food.js"></script>
     <script type="text/javascript" src="js/Snake.js"></script>
