@@ -17,88 +17,109 @@ var animate = function()
 	context.clearRect(0, 0, canvas.width, canvas.height);
 
 //========================Food Checks========================//
-	if(foodCount == 0)
+	if(alive.playerOne)
 	{
-		foodOne.respawn();
-		foodCount = 1;
-	}
-	if(foodCount2 == 0)
-	{
-		foodTwo.respawn();
-		foodCount2 = 1;
-	}
+		if(foodCount == 0)
+		{
+			foodOne.respawn();
+			foodCount = 1;
+		}
+		foodOne.draw();
 
-	foodOne.draw();
-	foodTwo.draw();
-//========================Food Checks========================//
-//========================Snake Movements========================//
-	if(snakeOne.length > 1)
-  {
-		moveBody(snakeOne);
-	}else
-  {
-		snakeOne[0].move();
-	}
-
-	if(snakeTwo.length > 1)
-	{
-		moveBody(snakeTwo);
-	}else
-	{
-		snakeTwo[0].move();
-	}
-
-	for(var i=0;i<snakeOne.length;i++)
-  {
-		snakeOne[i].draw();
-	}
-
-	for(var i=0;i<snakeTwo.length;i++)
-  {
-		snakeTwo[i].draw();
-	}
-//========================Snake Movements========================//
-
-	if(snakeOne[0].eats(foodOne)) //Eats Own Food
-	{
-		foodCount = 0;
-		previousCoords.x = snakeOne[snakeOne.length-1].x;
-		previousCoords.y = snakeOne[snakeOne.length-1].y;
-		snakeOne.push(new Snake(previousCoords.x,previousCoords.y-10,'#17B890'));
-		upDateScores();
-	}
-	if(snakeOne[0].eats(foodTwo)) //Eats Other Food
-	{
-		foodCount2 = 0;
 		if(snakeOne.length > 1)
 		{
-			snakeOne.pop();
+			moveBody(snakeOne);
+		}else
+		{
+			snakeOne[0].move();
 		}
-		upDateScores();
+
+		for(var i=0;i<snakeOne.length;i++)
+		{
+			snakeOne[i].draw();
+		}
+
+		if(snakeOne[0].eats(foodOne)) //Eats Own Food
+		{
+			foodCount = 0;
+			previousCoords.x = snakeOne[snakeOne.length-1].x;
+			previousCoords.y = snakeOne[snakeOne.length-1].y;
+			snakeOne.push(new Snake(previousCoords.x,previousCoords.y-10,'#17B890'));
+			upDateScores();
+		}
+		if(snakeOne[0].eats(foodTwo)) //Eats Other Food
+		{
+			foodCount2 = 0;
+			if(snakeOne.length > 1)
+			{
+				snakeOne.pop();
+			}
+			upDateScores();
+		}
+
+		cannibalized(snakeOne);
 	}
-	if(snakeTwo[0].eats(foodTwo)) //Eats Own Food
+
+
+	//========================Snake One========================//
+	//========================Snake Two========================//
+	if(alive.playerTwo)
 	{
-		foodCount2 = 0;
-		previousCoords2.x = snakeTwo[snakeTwo.length-1].x;
-		previousCoords2.y = snakeTwo[snakeTwo.length-1].y;
-		snakeTwo.push(new Snake(previousCoords2.x,previousCoords2.y-10,'#4287f5'));
-		upDateScores();
-	}
-	if(snakeTwo[0].eats(foodOne)) //Eats Other Food
-	{
-		foodCount = 0;
+		if(foodCount2 == 0)
+		{
+			foodTwo.respawn();
+			foodCount2 = 1;
+		}
+		foodTwo.draw();
+
 		if(snakeTwo.length > 1)
 		{
-			snakeTwo.pop();
+			moveBody(snakeTwo);
+		}else
+		{
+			snakeTwo[0].move();
 		}
-		upDateScores();
+
+		for(var i=0;i<snakeTwo.length;i++)
+		{
+			snakeTwo[i].draw();
+		}
+
+		if(snakeTwo[0].eats(foodTwo)) //Eats Own Food
+		{
+			foodCount2 = 0;
+			previousCoords2.x = snakeTwo[snakeTwo.length-1].x;
+			previousCoords2.y = snakeTwo[snakeTwo.length-1].y;
+			snakeTwo.push(new Snake(previousCoords2.x,previousCoords2.y-10,'#4287f5'));
+			upDateScores();
+		}
+		if(snakeTwo[0].eats(foodOne)) //Eats Other Food
+		{
+			foodCount = 0;
+			if(snakeTwo.length > 1)
+			{
+				snakeTwo.pop();
+			}
+			upDateScores();
+		}
+
+		cannibalized(snakeTwo);
+	}
+	//=========================Snake Two========================//
+
+	if(snakeOne[0].dies())
+	{
+		alive.playerOne = false;
+	}
+
+	if(snakeTwo[0].dies())
+	{
+		alive.playerTwo = false;
 	}
 
 
-	cannibalized(snakeOne);
-	cannibalized(snakeTwo);
 
-	if(snakeOne[0].dies() || snakeTwo[0].dies())
+	if(!alive.playerOne && !alive.playerTwo)
   {
 		cancelAnimationFrame(id);
     gameOver();
@@ -139,6 +160,7 @@ var upDateScores = function()
 	if(highScore.playerOne < score.playerOne)
 	{
 		highScore.playerOne = score.playerOne;
+		setCookie("snake1",highScore.playerOne,30);
 	}
 
 		$('.player_one_current').html(score.playerOne);
@@ -148,6 +170,8 @@ var upDateScores = function()
 	if(highScore.playerTwo < score.playerTwo)
 	{
 		highScore.playerTwo = score.playerTwo;
+		setCookie("snake2",highScore.playerTwo,30);
+
 	}
 
 		$('.player_two_current').html(score.playerTwo);

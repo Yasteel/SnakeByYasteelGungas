@@ -92,6 +92,29 @@ canvas{
   background: rgba(0,0,0,0.7);
 }
 
+.startContainer{
+  flex-direction: column;
+  justify-content:space-around;
+}
+
+.gameInfo{
+  background: rgba(0,0,0,0.7);
+  border: 1px solid #17B890;
+  padding: 20px 75px;
+}
+
+.gameInfo h2{
+  text-align: center;
+}
+
+.gameInfo ol li{
+  margin: 15px;
+}
+
+.gameInfo ol > *{
+  color: #adadad;
+}
+
 .startContainer.show, .gameOverContainer.show{
   display: flex;
 }

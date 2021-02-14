@@ -82,6 +82,7 @@ var upDateScores = function()
   if(highScore.playerOne < score.playerOne)
   {
     highScore.playerOne = score.playerOne;
+		setCookie("snake0",highScore.playerOne, 30);
   }
 
     $('.currentScore').html(score.playerOne);

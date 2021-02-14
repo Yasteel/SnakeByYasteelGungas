@@ -16,6 +16,7 @@ var valid_move = true;
 var valid_move_p2 = true;
 var score = {playerOne: 0, playerTwo: 0};
 var highScore = {playerOne: 0, playerTwo: 0};
+var alive = {playerOne: true, playerTwo: true};
 
 var gameType = 0;
 
@@ -23,6 +24,37 @@ var gameType = 0;
 var gameOver = function()
 {
   document.getElementsByClassName('gameOverContainer')[0].classList.add('show');
+}
+
+////////////////////////////COOKIE CODE/////////////////////////////////////////
+function getCookie(cname)
+{
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+
+  for(var i = 0; i <ca.length; i++)
+  {
+    console.log(ca[i]);
+    var c = ca[i];
+    while (c.charAt(0) == ' ')
+    {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0)
+    {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function setCookie(cname, cvalue, exdays)
+{
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -35,10 +67,22 @@ $(document).ready(function()
   {
     gameType = 1;
     sContainer.classList.remove('show');
-    var table = document.getElementsByClassName('multiplayer');
-    table[0].classList.add('hide');
-    table[1].classList.add('hide');
+    var table = document.getElementsByClassName('singlePlayer');
+    table[0].classList.remove('hide');
+    table[1].classList.remove('hide');
     $.getScript("js/PlayerOneScript.js",function(){
+
+      var spCookie = getCookie("snake0");
+      if(spCookie == "")
+      {
+        setCookie("snake0",0,30);
+      }else
+      {
+        highScore.playerOne = parseInt(spCookie);
+        upDateScores();
+      }
+
+
       animate();
     });
     // startGame();
@@ -49,9 +93,24 @@ $(document).ready(function()
     $.getScript("js/PlayerTwoScript.js",function()
     {
       gameType = 2;
-      var table = document.getElementsByClassName('singlePlayer');
-      table[0].classList.add('hide');
-      table[1].classList.add('hide');
+      var table = document.getElementsByClassName('multiplayer');
+      table[0].classList.remove('hide');
+      table[1].classList.remove('hide');
+
+      var mpCookie1 = getCookie("snake1");
+      var mpCookie2 = getCookie("snake2");
+
+      if(mpCookie1 == "" || mpCookie2 == "")
+      {
+        setCookie("snake1",0,30);
+        setCookie("snake2",0,30);
+      }else
+      {
+        highScore.playerOne = parseInt(mpCookie1);
+        highScore.playerTwo = parseInt(mpCookie2);
+        upDateScores();
+      }
+
       animate();
     });
   });

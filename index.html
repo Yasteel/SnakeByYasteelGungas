@@ -16,7 +16,7 @@
       <canvas></canvas>
     </div>
     <div class="footer">
-      <table class="singlePlayer">
+      <table class="singlePlayer hide">
         <tr>
           <th colspan="2">Player 1</th>
         </tr>
@@ -29,7 +29,7 @@
           <td class="highestScore">0</td>
         </tr>
       </table>
-      <table class="multiplayer" cellspacing=15>
+      <table class="multiplayer hide" cellspacing=15>
         <tr>
           <th>Player 1</th>
           <th> </th>
@@ -49,10 +49,30 @@
     </div>
     <div class="startContainer" >
       <div class="gameInfo">
-        <!-- <img src="Icons/w_key.png" alt="control-SinglePlayer">
-        <img src="Icons/a_key.png" alt="control-SinglePlayer">
-        <img src="Icons/s_key.png" alt="control-SinglePlayer">
-        <img src="Icons/d_key.png" alt="control-SinglePlayer"> -->
+        <h2>Rules</h2>
+        <ol>
+          <li>Snake will be able to grow as it eats Food</li>
+          <li>Snake can eat itself and grow shorter</li>
+          <li>Snake will die if it hits any boundaries (i.e the walls)</li>
+          <p>Controls for Single Player:</p>
+          <img src="Icons/w_key.png" alt="control-SinglePlayer">
+          <img src="Icons/a_key.png" alt="control-SinglePlayer">
+          <img src="Icons/s_key.png" alt="control-SinglePlayer">
+          <img src="Icons/d_key.png" alt="control-SinglePlayer">
+          <li>For 2 Player, snakes will be able to eat any food<br>However, eating opponent's food will shorten your snake</li>
+          <li>Game will end when both snakes die</li>
+          <p>Controls for 2 Player:</p>
+          <p>Player 1:</p>
+          <img src="Icons/w_key.png" alt="control-SinglePlayer">
+          <img src="Icons/a_key.png" alt="control-SinglePlayer">
+          <img src="Icons/s_key.png" alt="control-SinglePlayer">
+          <img src="Icons/d_key.png" alt="control-SinglePlayer">
+          <p>Player 2: </p>
+          <img src="Icons/8_key.png" alt="control-SinglePlayer">
+          <img src="Icons/6_key.png" alt="control-SinglePlayer">
+          <img src="Icons/2_key.png" alt="control-SinglePlayer">
+          <img src="Icons/4_key.png" alt="control-SinglePlayer">
+        </ol>
       </div>
       <div class="prompt">
         <button type="button" class="singlePlayerBtn"><i class="fas fa-gamepad"></i>Single Player</button>
@@ -61,7 +81,7 @@
     </div>
     <div class="gameOverContainer">
       <h2><i class="far fa-frown-open sad"></i> Game Over</h2>
-      <table class="singlePlayer">
+      <table class="singlePlayer hide">
         <tr>
           <th colspan="2">Player 1</th>
         </tr>
@@ -74,7 +94,7 @@
           <td class="highestScore">0</td>
         </tr>
       </table>
-      <table class="multiplayer" cellspacing=15 >
+      <table class="multiplayer hide" cellspacing=15 >
         <tr>
           <th>Player 1</th>
           <th> </th>
